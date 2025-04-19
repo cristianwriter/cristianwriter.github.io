@@ -1,5 +1,5 @@
 body{
-    margin:10%;
+    margin:5%;
     background-image: url(grey3.jpg);
     background-size: auto;
     background-repeat:no-repeat;
@@ -13,11 +13,13 @@ header{
 .home{
     font-family: 'Dancing Script', cursive;
     font-size:250%;
-    margin:0;
+    margin:5% 0;
 }
 .subhome{
     font-family: 'Cormorant Garamond', serif;
+    font-size:150%;
     text-align:center;
+    margin:0 10%;
 }
 nav {
     display:flex;
@@ -32,9 +34,23 @@ a, p, h3 {
     font-family: 'Merriweather', serif;
     font-style: italic;
     color:white;
+    font-size:80%;
+}
+a{
+    text-decoration: underline;
 }
 footer{
     display:flex;
     justify-content:center;
+    flex-direction:column;
     align-items:center;
+}
+.br{
+    background-image: linear-gradient(500deg,black,darkgrey);
+    background-size:auto;
+    padding:5%;
+    margin:5% 0;
+}
+hr{
+   width:80%;
 }
