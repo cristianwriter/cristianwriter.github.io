@@ -1,3 +1,38 @@
 body{
-  padding:50px 10px;
+    margin:10%;
+    background-image: url(img/velho3.jpg);
+    background-size: auto;
+    background-repeat:no-repeat;
+}
+header{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+}
+.home{
+    font-family: 'Dancing Script', cursive;
+    font-size:250%;
+    margin:0;
+}
+.subhome{
+    font-family: 'Cormorant Garamond', serif;
+    text-align:center;
+}
+nav {
+    display:flex;
+    justify-content:space-around;
+}
+.menu {
+    margin: 0 10px;
+    height:20px;
+}
+a, p, h3 {
+    font-family: 'Merriweather', serif;
+    font-style: italic;
+}
+footer{
+    display:flex;
+    justify-content:center;
+    align-items:center;
 }
