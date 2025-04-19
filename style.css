@@ -28,8 +28,10 @@ nav {
     height:20px;
 }
 a, p, h3 {
+    text-decoration:none;
     font-family: 'Merriweather', serif;
     font-style: italic;
+    color:white;
 }
 footer{
     display:flex;
