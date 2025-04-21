@@ -34,7 +34,7 @@ a, p, h3 {
     font-family: 'Merriweather', serif;
     font-style: italic;
     color:white;
-    font-size:15px;
+    font-size:80%;
 }
 a{
     text-decoration: underline;
