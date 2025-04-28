@@ -46,7 +46,7 @@ footer{
     align-items:center;
 }
 .br{
-    background-image: linear-gradient(500deg,black,darkgrey);
+    background-image: linear-gradient(500deg,black,#007F5C);
     background-size:auto;
     padding:5%;
     margin:5% 0;
