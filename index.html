@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Instagram 2080</title>
+  <title>InstaNova 2099</title>
   <style>
     * {
       margin: 0;
@@ -12,146 +12,146 @@
       font-family: 'Segoe UI', sans-serif;
     }
     body {
-      background: radial-gradient(ellipse at top, #0f0f1b, #05050c);
+      background: linear-gradient(to bottom right, #0f0f1f, #050510);
       color: #fff;
       overflow-x: hidden;
     }
     header {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 1rem 2rem;
-      background: rgba(255, 255, 255, 0.05);
-      border-bottom: 1px solid #333;
-      backdrop-filter: blur(10px);
+      border-bottom: 1px solid #222;
     }
     .logo {
-      font-size: 2rem;
+      font-size: 1.8rem;
       font-weight: bold;
-      color: #00f6ff;
-      text-shadow: 0 0 5px #00f6ff;
-    }
-    nav {
-      display: flex;
-      gap: 1.5rem;
+      color: #00fff2;
+      text-shadow: 0 0 8px #00fff2;
     }
     nav a {
+      margin-left: 1.5rem;
       text-decoration: none;
       color: #ccc;
       transition: 0.3s;
     }
     nav a:hover {
-      color: #00f6ff;
+      color: #00fff2;
+    }
+    .stories {
+      display: flex;
+      overflow-x: auto;
+      padding: 1rem;
+      gap: 1rem;
+      background: rgba(255, 255, 255, 0.02);
+      border-bottom: 1px solid #222;
+    }
+    .story {
+      min-width: 80px;
+      text-align: center;
+      cursor: pointer;
+    }
+    .story img {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      border: 3px solid #00fff2;
+      object-fit: cover;
+      transition: 0.3s;
+    }
+    .story span {
+      font-size: 0.75rem;
+      display: block;
+      margin-top: 0.4rem;
+      color: #aaa;
     }
     .feed {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
       padding: 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
     }
     .post {
-      background: rgba(255, 255, 255, 0.02);
+      background: rgba(255, 255, 255, 0.03);
       border: 1px solid #333;
       border-radius: 15px;
       overflow: hidden;
-      box-shadow: 0 0 15px rgba(0, 255, 255, 0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 0 12px rgba(0, 255, 255, 0.1);
     }
-    .post:hover {
-      transform: scale(1.03);
-      box-shadow: 0 0 25px rgba(0, 255, 255, 0.3);
-    }
-    .post img {
-      width: 100%;
-      height: 250px;
-      object-fit: cover;
-    }
-    .post .content {
+    .post .user-bar {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
       padding: 1rem;
     }
-    .post .user {
-      font-weight: bold;
-      color: #00f6ff;
-      margin-bottom: 0.5rem;
+    .post .user-bar img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #00fff2;
     }
-    .post .desc {
+    .post .user-bar span {
+      font-weight: bold;
+      color: #00fff2;
+    }
+    .post img.main-img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+    }
+    .post .actions {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.8rem 1rem;
+      font-size: 1.2rem;
+    }
+    .post .actions i {
+      margin-right: 1rem;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .post .actions i:hover {
+      color: #00fff2;
+    }
+    .post .likes, .post .desc, .post .comments {
+      padding: 0 1rem 1rem;
       font-size: 0.95rem;
       color: #ccc;
     }
-    .floating-button {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      background: #00f6ff;
-      box-shadow: 0 0 20px #00f6ff;
-      border: none;
-      color: #000;
-      font-size: 2rem;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      cursor: pointer;
-      transition: 0.3s ease;
-    }
-    .floating-button:hover {
-      background: #0ff;
-      box-shadow: 0 0 30px #0ff;
-    }
-    .modal {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.8);
-      display: none;
-      align-items: center;
-      justify-content: center;
-    }
-    .modal.active {
-      display: flex;
-    }
-    .modal-content {
-      background: #111;
-      padding: 2rem;
-      border-radius: 20px;
-      box-shadow: 0 0 20px #00f6ff;
-      width: 90%;
-      max-width: 500px;
-      animation: fadeIn 0.4s ease;
-    }
-    .modal-content h2 {
-      margin-bottom: 1rem;
-      color: #00f6ff;
-    }
-    .modal-content input, .modal-content textarea {
-      width: 100%;
-      margin-bottom: 1rem;
-      padding: 0.7rem;
-      border-radius: 10px;
-      border: none;
-      background: #222;
+    .post .desc b {
       color: #fff;
     }
-    .modal-content button {
-      background: #00f6ff;
-      border: none;
-      padding: 0.8rem 1.5rem;
-      border-radius: 10px;
-      color: #000;
-      font-weight: bold;
-      cursor: pointer;
+    .post .comment-box {
+      padding: 0.5rem 1rem;
+      border-top: 1px solid #222;
+      display: flex;
+      align-items: center;
     }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: scale(0.9); }
-      to { opacity: 1; transform: scale(1); }
+    .post .comment-box input {
+      flex: 1;
+      padding: 0.5rem;
+      background: #111;
+      border: none;
+      border-radius: 10px;
+      color: #fff;
+    }
+    .post .comment-box button {
+      background: #00fff2;
+      border: none;
+      color: #000;
+      padding: 0.5rem 1rem;
+      border-radius: 10px;
+      margin-left: 0.5rem;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
   <header>
-    <div class="logo">InstaFuture</div>
+    <div class="logo">InstaNova 2099</div>
     <nav>
       <a href="#">Feed</a>
       <a href="#">Explore</a>
@@ -160,74 +160,103 @@
     </nav>
   </header>
 
-  <section class="feed" id="feed">
-    <!-- Posts gerados por JS -->
+  <section class="stories" id="stories">
+    <!-- JS stories here -->
   </section>
 
-  <button class="floating-button" onclick="toggleModal()">+</button>
-
-  <div class="modal" id="postModal">
-    <div class="modal-content">
-      <h2>Novo Post</h2>
-      <input type="text" id="username" placeholder="Usuário futurista" />
-      <input type="text" id="imgUrl" placeholder="URL da imagem" />
-      <textarea id="description" rows="3" placeholder="Descrição criativa..."></textarea>
-      <button onclick="addPost()">Publicar</button>
-    </div>
-  </div>
+  <section class="feed" id="feed">
+    <!-- JS posts here -->
+  </section>
 
   <script>
-    const feed = document.getElementById("feed");
-    const modal = document.getElementById("postModal");
+    const storiesData = [
+      { user: "luna.tech", img: "https://randomuser.me/api/portraits/women/45.jpg" },
+      { user: "drone.x", img: "https://randomuser.me/api/portraits/men/32.jpg" },
+      { user: "artificial.zen", img: "https://randomuser.me/api/portraits/women/50.jpg" },
+      { user: "cyber.rafa", img: "https://randomuser.me/api/portraits/men/54.jpg" },
+      { user: "astro.fox", img: "https://randomuser.me/api/portraits/men/29.jpg" }
+    ];
 
-    const samplePosts = [
+    const postsData = [
       {
-        user: "neo_drone",
-        img: "https://images.unsplash.com/photo-1518779578993-ec3579fee39f",
-        desc: "Sobrevoando as ruínas da velha cidade #CyberView"
+        user: "luna.tech",
+        avatar: "https://randomuser.me/api/portraits/women/45.jpg",
+        img: "https://images.unsplash.com/photo-1504198453319-5ce911bafcde",
+        likes: 842,
+        desc: "Nova aurora vista de Marte. #espacial #futuro",
+        comments: ["Uau!", "Parece irreal 😍"]
       },
       {
-        user: "aurora_art",
-        img: "https://images.unsplash.com/photo-1609941264373-78515a139d4d",
-        desc: "A arte digital transcende o tempo."
+        user: "drone.x",
+        avatar: "https://randomuser.me/api/portraits/men/32.jpg",
+        img: "https://images.unsplash.com/photo-1549921296-3a6bfe2c1a5d",
+        likes: 420,
+        desc: "Drone sobre Neo-Tóquio.",
+        comments: ["Quero ir aí!", "Top demais"]
       },
       {
-        user: "xvr_vision",
-        img: "https://images.unsplash.com/photo-1526948128573-703ee1aeb6fa",
-        desc: "Filtro quântico ativado. Realidade ampliada."
+        user: "astro.fox",
+        avatar: "https://randomuser.me/api/portraits/men/29.jpg",
+        img: "https://images.unsplash.com/photo-1517817748498-9d37cd1b0ee4",
+        likes: 1280,
+        desc: "Astronauta entre estrelas. #galáxia",
+        comments: ["Incrível!", "Quero esse fundo no meu quarto"]
       }
     ];
 
-    function renderPosts(posts) {
-      feed.innerHTML = "";
-      posts.forEach(post => {
-        const postEl = document.createElement("div");
-        postEl.classList.add("post");
-        postEl.innerHTML = `
-          <img src="${post.img}" alt="post image">
-          <div class="content">
-            <div class="user">@${post.user}</div>
-            <div class="desc">${post.desc}</div>
+    const storyEl = document.getElementById("stories");
+    const feedEl = document.getElementById("feed");
+
+    function renderStories() {
+      storiesData.forEach(s => {
+        storyEl.innerHTML += `
+          <div class="story">
+            <img src="${s.img}" alt="${s.user}" />
+            <span>${s.user}</span>
           </div>`;
-        feed.appendChild(postEl);
       });
     }
 
-    function toggleModal() {
-      modal.classList.toggle("active");
+    function renderPosts() {
+      postsData.forEach(p => {
+        let post = document.createElement("div");
+        post.classList.add("post");
+        post.innerHTML = `
+          <div class="user-bar">
+            <img src="${p.avatar}" />
+            <span>@${p.user}</span>
+          </div>
+          <img class="main-img" src="${p.img}" />
+          <div class="actions">
+            <div>
+              <i onclick="likePost(this)">❤️</i>
+              <i>💬</i>
+              <i>📤</i>
+            </div>
+            <div><i>🔖</i></div>
+          </div>
+          <div class="likes">${p.likes} curtidas</div>
+          <div class="desc"><b>@${p.user}</b> ${p.desc}</div>
+          <div class="comments">${p.comments.map(c => `<div>💬 ${c}</div>`).join('')}</div>
+          <div class="comment-box">
+            <input type="text" placeholder="Comente algo..." />
+            <button>Enviar</button>
+          </div>
+        `;
+        feedEl.appendChild(post);
+      });
     }
 
-    function addPost() {
-      const user = document.getElementById("username").value;
-      const img = document.getElementById("imgUrl").value;
-      const desc = document.getElementById("description").value;
-      if (!user || !img || !desc) return alert("Preencha tudo.");
-      samplePosts.unshift({ user, img, desc });
-      renderPosts(samplePosts);
-      toggleModal();
+    function likePost(icon) {
+      if (icon.style.color === "red") {
+        icon.style.color = "";
+      } else {
+        icon.style.color = "red";
+      }
     }
 
-    renderPosts(samplePosts);
+    renderStories();
+    renderPosts();
   </script>
 </body>
 </html>
