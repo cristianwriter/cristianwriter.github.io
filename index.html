@@ -1,71 +1,24 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Site Simples</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blog Profissional</title>
   <style>
-    body {
+    * {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f5f5f5;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f9f9f9;
       color: #333;
-      text-align: center;
+      line-height: 1.6;
     }
 
     header {
-      background: #222;
-      color: white;
-      padding: 1rem;
-    }
-
-    .imagem-principal {
-      width: 300px;
-      border-radius: 10px;
-      margin: 2rem 0;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    }
-
-    button {
-      padding: 0.7rem 1.2rem;
-      font-size: 1rem;
-      background: #007bff;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background: #0056b3;
-    }
-
-    footer {
-      margin-top: 2rem;
-      font-size: 0.9rem;
-      color: #777;
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <h1>Bem-vindo ao Meu Site</h1>
-  </header>
-
-  <main>
-    <img src="https://picsum.photos/400/300" alt="Imagem de exemplo" class="imagem-principal" />
-    <p id="mensagem">Clique no botão para ver uma mensagem.</p>
-    <button onclick="mostrarMensagem()">Clique aqui</button>
-  </main>
-
-  <footer>
-    <p>&copy; 2025 - Criado por André</p>
-  </footer>
-
-  <script>
-    function mostrarMensagem() {
-      document.getElementById("mensagem").innerText = "Você clicou no botão! 🎉";
-    }
-  </script>
-</body>
-</html>
+      background-color: #24292e;
+      color: #fff;
+      padding:
