@@ -1,24 +1,134 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Blog Profissional</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>InstaFuturista</title>
   <style>
+    /* Reset e estilos básicos */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-    }
-
-    body {
       font-family: 'Segoe UI', sans-serif;
-      background-color: #f9f9f9;
-      color: #333;
-      line-height: 1.6;
     }
-
+    body {
+      background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
+      color: #e0e0e0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
     header {
-      background-color: #24292e;
-      color: #fff;
-      padding:
+      width: 100%;
+      padding: 1rem;
+      background-color: #121212;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #333;
+    }
+    header h1 {
+      color: #00ffcc;
+      font-size: 1.5rem;
+    }
+    nav a {
+      color: #e0e0e0;
+      margin: 0 1rem;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: #00ffcc;
+    }
+    main {
+      width: 100%;
+      max-width: 600px;
+      padding: 2rem 1rem;
+    }
+    .post {
+      background-color: #1e1e1e;
+      border-radius: 10px;
+      margin-bottom: 2rem;
+      overflow: hidden;
+      box-shadow: 0 0 10px rgba(0, 255, 204, 0.2);
+      transition: transform 0.3s;
+    }
+    .post:hover {
+      transform: scale(1.02);
+    }
+    .post-header, .post-footer {
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+    }
+    .post-header img, .post-footer img {
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      margin-right: 1rem;
+    }
+    .post-image {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .post-footer {
+      justify-content: space-between;
+    }
+    .like-btn {
+      background: none;
+      border: none;
+      color: #e0e0e0;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: color 0.3s;
+    }
+    .like-btn.liked {
+      color: #ff4081;
+    }
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.2rem;
+      }
+      nav a {
+        margin: 0 0.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>InstaFuturista</h1>
+    <nav>
+      <a href="#">Início</a>
+      <a href="#">Explorar</a>
+      <a href="#">Perfil</a>
+    </nav>
+  </header>
+  <main>
+    <div class="post">
+      <div class="post-header">
+        <img src="https://via.placeholder.com/40" alt="Avatar">
+        <span>@usuario_futurista</span>
+      </div>
+      <img class="post-image" src="https://via.placeholder.com/600x400" alt="Postagem">
+      <div class="post-footer">
+        <button class="like-btn">❤️ Curtir</button>
+        <span>42 curtidas</span>
+      </div>
+    </div>
+    <!-- Adicione mais postagens conforme necessário -->
+  </main>
+  <script>
+    // Script para curtir postagens
+    document.querySelectorAll('.like-btn').forEach(button => {
+      button.addEventListener('click', () => {
+        button.classList.toggle('liked');
+        button.textContent = button.classList.contains('liked') ? '💖 Curtido' : '❤️ Curtir';
+      });
+    });
+  </script>
+</body>
+</html>
