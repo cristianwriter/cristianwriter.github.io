@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>InstaFuturista</title>
+  <title>Instagram 2080</title>
   <style>
-    /* Reset e estilos básicos */
     * {
       margin: 0;
       padding: 0;
@@ -13,122 +12,222 @@
       font-family: 'Segoe UI', sans-serif;
     }
     body {
-      background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
-      color: #e0e0e0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-height: 100vh;
+      background: radial-gradient(ellipse at top, #0f0f1b, #05050c);
+      color: #fff;
+      overflow-x: hidden;
     }
     header {
-      width: 100%;
-      padding: 1rem;
-      background-color: #121212;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      padding: 1rem 2rem;
+      background: rgba(255, 255, 255, 0.05);
       border-bottom: 1px solid #333;
+      backdrop-filter: blur(10px);
     }
-    header h1 {
-      color: #00ffcc;
-      font-size: 1.5rem;
+    .logo {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #00f6ff;
+      text-shadow: 0 0 5px #00f6ff;
+    }
+    nav {
+      display: flex;
+      gap: 1.5rem;
     }
     nav a {
-      color: #e0e0e0;
-      margin: 0 1rem;
       text-decoration: none;
-      transition: color 0.3s;
+      color: #ccc;
+      transition: 0.3s;
     }
     nav a:hover {
-      color: #00ffcc;
+      color: #00f6ff;
     }
-    main {
-      width: 100%;
-      max-width: 600px;
-      padding: 2rem 1rem;
+    .feed {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      padding: 2rem;
     }
     .post {
-      background-color: #1e1e1e;
-      border-radius: 10px;
-      margin-bottom: 2rem;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid #333;
+      border-radius: 15px;
       overflow: hidden;
-      box-shadow: 0 0 10px rgba(0, 255, 204, 0.2);
-      transition: transform 0.3s;
+      box-shadow: 0 0 15px rgba(0, 255, 255, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
     .post:hover {
-      transform: scale(1.02);
+      transform: scale(1.03);
+      box-shadow: 0 0 25px rgba(0, 255, 255, 0.3);
     }
-    .post-header, .post-footer {
-      padding: 1rem;
-      display: flex;
-      align-items: center;
-    }
-    .post-header img, .post-footer img {
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      margin-right: 1rem;
-    }
-    .post-image {
+    .post img {
       width: 100%;
-      height: auto;
-      display: block;
+      height: 250px;
+      object-fit: cover;
     }
-    .post-footer {
-      justify-content: space-between;
+    .post .content {
+      padding: 1rem;
     }
-    .like-btn {
-      background: none;
+    .post .user {
+      font-weight: bold;
+      color: #00f6ff;
+      margin-bottom: 0.5rem;
+    }
+    .post .desc {
+      font-size: 0.95rem;
+      color: #ccc;
+    }
+    .floating-button {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: #00f6ff;
+      box-shadow: 0 0 20px #00f6ff;
       border: none;
-      color: #e0e0e0;
+      color: #000;
+      font-size: 2rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       cursor: pointer;
-      font-size: 1rem;
-      transition: color 0.3s;
+      transition: 0.3s ease;
     }
-    .like-btn.liked {
-      color: #ff4081;
+    .floating-button:hover {
+      background: #0ff;
+      box-shadow: 0 0 30px #0ff;
     }
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 1.2rem;
-      }
-      nav a {
-        margin: 0 0.5rem;
-      }
+    .modal {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.8);
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal.active {
+      display: flex;
+    }
+    .modal-content {
+      background: #111;
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 0 20px #00f6ff;
+      width: 90%;
+      max-width: 500px;
+      animation: fadeIn 0.4s ease;
+    }
+    .modal-content h2 {
+      margin-bottom: 1rem;
+      color: #00f6ff;
+    }
+    .modal-content input, .modal-content textarea {
+      width: 100%;
+      margin-bottom: 1rem;
+      padding: 0.7rem;
+      border-radius: 10px;
+      border: none;
+      background: #222;
+      color: #fff;
+    }
+    .modal-content button {
+      background: #00f6ff;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 10px;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>InstaFuturista</h1>
+    <div class="logo">InstaFuture</div>
     <nav>
-      <a href="#">Início</a>
-      <a href="#">Explorar</a>
-      <a href="#">Perfil</a>
+      <a href="#">Feed</a>
+      <a href="#">Explore</a>
+      <a href="#">Messages</a>
+      <a href="#">Profile</a>
     </nav>
   </header>
-  <main>
-    <div class="post">
-      <div class="post-header">
-        <img src="https://via.placeholder.com/40" alt="Avatar">
-        <span>@usuario_futurista</span>
-      </div>
-      <img class="post-image" src="https://via.placeholder.com/600x400" alt="Postagem">
-      <div class="post-footer">
-        <button class="like-btn">❤️ Curtir</button>
-        <span>42 curtidas</span>
-      </div>
+
+  <section class="feed" id="feed">
+    <!-- Posts gerados por JS -->
+  </section>
+
+  <button class="floating-button" onclick="toggleModal()">+</button>
+
+  <div class="modal" id="postModal">
+    <div class="modal-content">
+      <h2>Novo Post</h2>
+      <input type="text" id="username" placeholder="Usuário futurista" />
+      <input type="text" id="imgUrl" placeholder="URL da imagem" />
+      <textarea id="description" rows="3" placeholder="Descrição criativa..."></textarea>
+      <button onclick="addPost()">Publicar</button>
     </div>
-    <!-- Adicione mais postagens conforme necessário -->
-  </main>
+  </div>
+
   <script>
-    // Script para curtir postagens
-    document.querySelectorAll('.like-btn').forEach(button => {
-      button.addEventListener('click', () => {
-        button.classList.toggle('liked');
-        button.textContent = button.classList.contains('liked') ? '💖 Curtido' : '❤️ Curtir';
+    const feed = document.getElementById("feed");
+    const modal = document.getElementById("postModal");
+
+    const samplePosts = [
+      {
+        user: "neo_drone",
+        img: "https://images.unsplash.com/photo-1518779578993-ec3579fee39f",
+        desc: "Sobrevoando as ruínas da velha cidade #CyberView"
+      },
+      {
+        user: "aurora_art",
+        img: "https://images.unsplash.com/photo-1609941264373-78515a139d4d",
+        desc: "A arte digital transcende o tempo."
+      },
+      {
+        user: "xvr_vision",
+        img: "https://images.unsplash.com/photo-1526948128573-703ee1aeb6fa",
+        desc: "Filtro quântico ativado. Realidade ampliada."
+      }
+    ];
+
+    function renderPosts(posts) {
+      feed.innerHTML = "";
+      posts.forEach(post => {
+        const postEl = document.createElement("div");
+        postEl.classList.add("post");
+        postEl.innerHTML = `
+          <img src="${post.img}" alt="post image">
+          <div class="content">
+            <div class="user">@${post.user}</div>
+            <div class="desc">${post.desc}</div>
+          </div>`;
+        feed.appendChild(postEl);
       });
-    });
+    }
+
+    function toggleModal() {
+      modal.classList.toggle("active");
+    }
+
+    function addPost() {
+      const user = document.getElementById("username").value;
+      const img = document.getElementById("imgUrl").value;
+      const desc = document.getElementById("description").value;
+      if (!user || !img || !desc) return alert("Preencha tudo.");
+      samplePosts.unshift({ user, img, desc });
+      renderPosts(samplePosts);
+      toggleModal();
+    }
+
+    renderPosts(samplePosts);
   </script>
 </body>
 </html>
